@@ -19,6 +19,13 @@ An AI-powered Retrieval-Augmented Generation (RAG) assistant designed to index t
 ### Requirements
 * Python 3.10+
 * [`uv`](https://github.com/astral-sh/uv) package manager
+## Usage Instructions
+
+### 1. Index the Handbook
+To parse the handbook, perform structural Markdown chunking, and generate vector index embeddings, run:
+
+```bash
+uv run python -m merik_rag.ingest
 
 ### Setup Instructions
 
