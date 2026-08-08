@@ -4,9 +4,9 @@ An AI-powered Retrieval-Augmented Generation (RAG) assistant designed to index t
 
 ---
 
-## Indexing Command
+## Indexing
 
-To index the handbook corpus, parse structural Markdown, and build the vector search database, run the indexing command:
+To parse the structural Markdown handbook and build the vector search index, run the indexing command:
 
 ```bash
 uv run python -m merik_rag.ingest
