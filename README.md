@@ -10,3 +10,9 @@ To parse the structural Markdown handbook and build the vector search index, run
 
 ```bash
 uv run python -m merik_rag.ingest
+## Setup & Installation
+
+1. **Clone the Repository:**
+   ```bash
+   git clone [https://github.com/Habibullah5/Merik-solution_ragbase_appliction.git](https://github.com/Habibullah5/Merik-solution_ragbase_appliction.git)
+   cd Merik-solution_ragbase_appliction
