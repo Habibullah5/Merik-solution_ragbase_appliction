@@ -1,0 +1,14 @@
+[
+  {
+    "question": "What is the equipment budget for new engineers?",
+    "expected_sections": [
+      "Merik Solutions Engineering Handbook > 1. Working at Merik > 1.3 Equipment"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "What is the policy for deep space travel reimbursement?",
+    "expected_sections": [],
+    "should_refuse": true
+  }
+]

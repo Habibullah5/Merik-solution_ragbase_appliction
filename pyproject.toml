@@ -1,0 +1,25 @@
+[project]
+name = "merik-rag"
+version = "0.1.0"
+description = "Hybrid RAG over Merik Engineering Handbook v4.2"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.25.0",
+    "chromadb>=0.5.0",
+    "langchain-text-splitters>=0.3.0",
+    "numpy>=1.26.0",
+    "pydantic>=2.7.0",
+    "rank-bm25>=0.2.2",
+    "sentence-transformers>=3.0.0",
+]
+
+[project.scripts]
+merik-rag = "merik_rag.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/merik_rag"]

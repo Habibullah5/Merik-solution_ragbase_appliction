@@ -1,0 +1,326 @@
+[
+  {
+    "chunk_id": "merik_5e462ff7_0",
+    "content": "# Merik Solutions Engineering Handbook  \nVersion 4.2 \u00b7 Last updated 12 June 2026 \u00b7 Owner: Engineering Operations  \nThis handbook sets out how engineering works at Merik Solutions: what is\nexpected of you, how code reaches production, and what happens when something\ngoes wrong. It applies to every engineer, including interns and contractors.  \nWhere this document and a customer contract disagree, the contract wins.\nWhere it and the employment handbook disagree on pay, leave or benefits, the\nemployment handbook wins.  \n---",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook",
+      "chunk_id": "merik_5e462ff7_0"
+    }
+  },
+  {
+    "chunk_id": "merik_2bbb4f8d_0",
+    "content": "## 1. Working at Merik  \n### 1.1 Hours and availability  \nCore hours are 11:00 to 16:00 Pakistan Standard Time. Outside those hours you\nare trusted to work when you work best. Engineers are expected to be reachable\nduring core hours on the day they are on call, and not otherwise.  \nThere is no expectation that you answer messages in the evening. If something\ngenuinely cannot wait until morning it goes through the on-call rota described\nin section 6, not through a direct message to whoever is awake.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 1. Working at Merik > 1.1 Hours and availability",
+      "chunk_id": "merik_2bbb4f8d_0"
+    }
+  },
+  {
+    "chunk_id": "merik_f1a075b9_0",
+    "content": "### 1.2 Remote and office  \nMerik is remote first. The Lahore office is available to anyone who wants a desk\nand is booked through the internal rota. Teams may agree on one shared in-office\nday per week; nobody is required to attend more than that.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 1. Working at Merik > 1.2 Remote and office",
+      "chunk_id": "merik_f1a075b9_0"
+    }
+  },
+  {
+    "chunk_id": "merik_fd866974_0",
+    "content": "### 1.3 Equipment  \nNew engineers receive a laptop, an external display and a budget of PKR 60,000\nfor a chair, desk or peripherals. Claim it through Finance within your first\nninety days. After ninety days the budget lapses and cannot be reinstated.  \nReplacement cycles are three years for laptops and five years for displays. If a\nmachine fails before then, raise ticket type `IT-HW` and you will be issued a\nloan machine within one working day.  \n---",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 1. Working at Merik > 1.3 Equipment",
+      "chunk_id": "merik_fd866974_0"
+    }
+  },
+  {
+    "chunk_id": "merik_62de7842_0",
+    "content": "## 2. Code and review  \n### 2.1 Branching  \nWork happens on short-lived branches cut from `main`. A branch that has been\nopen for more than five working days should either be merged or split. Long\nbranches are the most common cause of painful merges at Merik and we would\nrather review three small changes than one large one.  \nBranch names follow `type/short-description`, where type is one of `feat`,\n`fix`, `chore`, `docs` or `spike`.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 2. Code and review > 2.1 Branching",
+      "chunk_id": "merik_62de7842_0"
+    }
+  },
+  {
+    "chunk_id": "merik_268ee64f_0",
+    "content": "### 2.2 Review expectations  \nEvery change to a production repository requires one approving review. Changes\nthat touch authentication, billing or data deletion require two, and at least\none of those must come from the owning team.  \nReviewers are expected to respond within one working day. If you cannot review\nsomething in that window, say so in the thread rather than leaving it silent.\nA review that arrives late is inconvenient; a review that never arrives blocks\na colleague indefinitely.  \nNote that the two-approval rule does not apply to enterprise customer\nintegrations, which follow the separate change process in section 2.6.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 2. Code and review > 2.2 Review expectations",
+      "chunk_id": "merik_268ee64f_0"
+    }
+  },
+  {
+    "chunk_id": "merik_baeb9363_0",
+    "content": "### 2.3 What a reviewer looks for  \nIn rough priority order:  \n1. Does it do what the description says it does?\n2. Is it tested where a failure would be expensive?\n3. Will the next engineer understand it without asking the author?\n4. Is it consistent with how the rest of the repository works?\n5. Style, naming and formatting.  \nPoints one to three are worth commenting on. Point five is worth automating and\nshould rarely appear in a human review.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 2. Code and review > 2.3 What a reviewer looks for",
+      "chunk_id": "merik_baeb9363_0"
+    }
+  },
+  {
+    "chunk_id": "merik_709cddb7_0",
+    "content": "### 2.4 Test requirements  \nMerge is blocked unless the automated suite passes. Coverage is measured but not\ngated; a coverage number is a signal, not a target, and code written to satisfy\na percentage is usually worse than code written to be correct.  \nNew code paths that handle money, personal data or irreversible actions require\na test. This is not negotiable and reviewers are expected to enforce it.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 2. Code and review > 2.4 Test requirements",
+      "chunk_id": "merik_709cddb7_0"
+    }
+  },
+  {
+    "chunk_id": "merik_79f9780b_0",
+    "content": "### 2.5 Dependencies  \nAdding a dependency is a long-term commitment made in thirty seconds. Before\nadding one, check that it is maintained, that its licence is compatible, and\nthat the problem is not three lines of code you could own outright.  \nAll dependency versions are pinned in a committed lockfile. Unpinned versions\nare treated as a build defect.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 2. Code and review > 2.5 Dependencies",
+      "chunk_id": "merik_79f9780b_0"
+    }
+  },
+  {
+    "chunk_id": "merik_526f227e_0",
+    "content": "### 2.6 Enterprise change process  \nChanges to enterprise customer integrations require a signed change request,\na nominated rollback owner, and a deployment window agreed with the customer.\nThis process adds roughly two working days and exists because these customers\nhave contractual notice periods.  \n---",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 2. Code and review > 2.6 Enterprise change process",
+      "chunk_id": "merik_526f227e_0"
+    }
+  },
+  {
+    "chunk_id": "merik_73684d8b_0",
+    "content": "## 3. Deployment  \n### 3.1 Release cadence  \nTeams deploy when their change is ready. There is no release train and no\nfreeze except the one described in section 3.5.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 3. Deployment > 3.1 Release cadence",
+      "chunk_id": "merik_73684d8b_0"
+    }
+  },
+  {
+    "chunk_id": "merik_47bd7df2_0",
+    "content": "### 3.2 Environments  \n| Environment | Purpose | Who can deploy |\n| --- | --- | --- |\n| `local` | Development | Anyone |\n| `preview` | Per-branch preview builds | Automatic on push |\n| `staging` | Integration and QA | Anyone on the owning team |\n| `production` | Live | Owning team, after review |  \nPreview environments are destroyed seven days after the branch is merged or\nclosed. Do not treat a preview URL as durable.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 3. Deployment > 3.2 Environments",
+      "chunk_id": "merik_47bd7df2_0"
+    }
+  },
+  {
+    "chunk_id": "merik_039897e4_0",
+    "content": "### 3.3 Rollback  \nEvery deployment must be reversible within ten minutes. If a change cannot be\nrolled back, it must be shipped behind a flag that can be turned off.  \nTo roll back, run the deployment pipeline against the previous release tag. Do\nnot roll back by reverting the commit and redeploying: that is slower and it\nloses the record of what actually happened.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 3. Deployment > 3.3 Rollback",
+      "chunk_id": "merik_039897e4_0"
+    }
+  },
+  {
+    "chunk_id": "merik_d733c61a_0",
+    "content": "### 3.4 Feature flags  \nFlags are for shipping incomplete work safely, not for permanent configuration.\nA flag older than sixty days is reported to the owning team weekly until it is\nremoved. Flags that have been fully rolled out should be deleted along with the\ndead branch of code behind them.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 3. Deployment > 3.4 Feature flags",
+      "chunk_id": "merik_d733c61a_0"
+    }
+  },
+  {
+    "chunk_id": "merik_51692f75_0",
+    "content": "### 3.5 Deployment freeze  \nThere is one annual freeze, from 24 December to 2 January inclusive. During the\nfreeze only fixes for severity one incidents may be deployed, and they require\napproval from the on-call lead.  \n---",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 3. Deployment > 3.5 Deployment freeze",
+      "chunk_id": "merik_51692f75_0"
+    }
+  },
+  {
+    "chunk_id": "merik_6413bdef_0",
+    "content": "## 4. Data and privacy  \n### 4.1 Classification  \n| Class | Examples | Handling |\n| --- | --- | --- |\n| Public | Marketing copy, docs | No restriction |\n| Internal | Architecture notes, roadmaps | Merik accounts only |\n| Confidential | Customer records, contracts | Named access, logged |\n| Restricted | Credentials, keys, health data | Named access, encrypted, audited |",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 4. Data and privacy > 4.1 Classification",
+      "chunk_id": "merik_6413bdef_0"
+    }
+  },
+  {
+    "chunk_id": "merik_7885c6b6_0",
+    "content": "### 4.2 Customer data in development  \nProduction customer data must never be copied into a development or staging\nenvironment. If you need realistic data, use the synthetic generator in\n`merik-tools/fixtures`, which produces structurally identical records with no\nreal people in them.  \nThe single exception is a severity one incident, where a named engineer may be\ngranted time-boxed read access to production by the on-call lead. That access\nexpires automatically after four hours and every query is logged.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 4. Data and privacy > 4.2 Customer data in development",
+      "chunk_id": "merik_7885c6b6_0"
+    }
+  },
+  {
+    "chunk_id": "merik_8d939c97_0",
+    "content": "### 4.3 Retention  \nCustomer records are retained for seven years after account closure, which is\nthe statutory minimum for our contracts. Application logs are retained for\nninety days. Prompt and response logs from AI features are retained for thirty\ndays and are excluded from the seven year rule.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 4. Data and privacy > 4.3 Retention",
+      "chunk_id": "merik_8d939c97_0"
+    }
+  },
+  {
+    "chunk_id": "merik_1491b3de_0",
+    "content": "### 4.4 Deletion requests  \nA verified deletion request is completed within thirty days. Deletion covers\nproduction records, backups on their next rotation, and any derived index or\nembedding store. The last of those is the one teams forget: if a customer\nrecord has been embedded into a vector index, deleting the row is not enough.  \n---",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 4. Data and privacy > 4.4 Deletion requests",
+      "chunk_id": "merik_1491b3de_0"
+    }
+  },
+  {
+    "chunk_id": "merik_44e92c61_0",
+    "content": "## 5. Security  \n### 5.1 Credentials  \nNo secret may be committed to a repository, ever, including in a branch that\nis never merged. Secrets live in the secret manager and reach the application\nthrough environment variables at deploy time.  \nIf a secret reaches a repository, treat it as compromised. Rotate it first,\nthen clean the history. Rotating takes minutes; assuming nobody noticed takes\none scraper to disprove.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 5. Security > 5.1 Credentials",
+      "chunk_id": "merik_44e92c61_0"
+    }
+  },
+  {
+    "chunk_id": "merik_87a130fc_0",
+    "content": "### 5.2 Access  \nAccess is granted by role, reviewed quarterly, and revoked on the last working\nday. Requests for standing production write access are declined by default;\nif you need it for a specific piece of work, request it time-boxed.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 5. Security > 5.2 Access",
+      "chunk_id": "merik_87a130fc_0"
+    }
+  },
+  {
+    "chunk_id": "merik_3c49840a_0",
+    "content": "### 5.3 Reporting a suspected incident  \nReport anything suspicious to the security channel immediately, including\nthings you are not sure about. Merik has never disciplined anyone for a false\nalarm and has no intention of starting.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 5. Security > 5.3 Reporting a suspected incident",
+      "chunk_id": "merik_3c49840a_0"
+    }
+  },
+  {
+    "chunk_id": "merik_ac9149f5_0",
+    "content": "### 5.4 Known error codes  \nThese identifiers appear in logs and support tickets. They are exact strings\nand will not be found by meaning alone.  \n| Code | Meaning | First action |\n| --- | --- | --- |\n| `MRK-4471` | Upstream auth token expired mid-request | Retry once; if it persists, rotate |\n| `MRK-4472` | Token valid but scope insufficient | Check the role assignment |\n| `MRK-5010` | Rate limit reached on the model provider | Back off with jitter, do not retry immediately |\n| `MRK-5011` | Token-per-minute ceiling reached | Queue the work, reduce prompt size |\n| `MRK-6203` | Vector index unavailable | Fall back to keyword retrieval, page the on-call |\n| `MRK-6204` | Embedding model version mismatch | Re-embed the affected corpus |\n| `MRK-7788` | Deletion job failed on a derived index | Escalate within one hour, see section 4.4 |  \n---",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 5. Security > 5.4 Known error codes",
+      "chunk_id": "merik_ac9149f5_0"
+    }
+  },
+  {
+    "chunk_id": "merik_2d791a5e_0",
+    "content": "## 6. Incidents  \n### 6.1 Severity  \n**Severity one.** Customers cannot use the product, or data is at risk.\nResponse begins immediately, day or night.  \n**Severity two.** A significant feature is broken, or performance is badly\ndegraded. Response begins within one hour during working hours.  \n**Severity three.** Something is wrong but customers can still work. Handled in\nthe normal course of the week.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 6. Incidents > 6.1 Severity",
+      "chunk_id": "merik_2d791a5e_0"
+    }
+  },
+  {
+    "chunk_id": "merik_ffc9be2d_0",
+    "content": "### 6.2 On call  \nEach team runs a weekly rota. The on-call engineer is expected to acknowledge a\nseverity one page within fifteen minutes and to have help if they need it: the\nrota exists so that one person notices, not so that one person fixes everything\nalone.  \nOn-call weeks are compensated at the rate set out in the employment handbook,\nwhich is a separate document and not covered here.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 6. Incidents > 6.2 On call",
+      "chunk_id": "merik_ffc9be2d_0"
+    }
+  },
+  {
+    "chunk_id": "merik_0d6790b8_0",
+    "content": "### 6.3 During an incident  \nOne person runs the incident and does not also debug it. Their job is to keep\na timeline, decide what gets communicated, and pull in whoever is needed.  \nCommunicate early and plainly. \"We are investigating reports of failed logins\"\nis a better first message than a precise explanation twenty minutes later.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 6. Incidents > 6.3 During an incident",
+      "chunk_id": "merik_0d6790b8_0"
+    }
+  },
+  {
+    "chunk_id": "merik_bd973018_0",
+    "content": "### 6.4 Afterwards  \nEvery severity one and severity two incident gets a written review within five\nworking days. The review describes what happened, what the contributing causes\nwere, and what changes follow. It does not name individuals as causes.  \nReviews are published internally. An incident nobody can read about is an\nincident the company learns nothing from.  \n---",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 6. Incidents > 6.4 Afterwards",
+      "chunk_id": "merik_bd973018_0"
+    }
+  },
+  {
+    "chunk_id": "merik_78b7789c_0",
+    "content": "## 7. AI features  \n### 7.1 Prompts are code  \nPrompts live in versioned files in the repository, not inline in application\ncode. Every response is logged with the prompt version that produced it. This\nis the only way to answer the question \"what did we actually send\" after the\nfact.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 7. AI features > 7.1 Prompts are code",
+      "chunk_id": "merik_78b7789c_0"
+    }
+  },
+  {
+    "chunk_id": "merik_b32976c8_0",
+    "content": "### 7.2 Evaluation before launch  \nNo AI feature reaches production without an evaluation suite that runs in one\ncommand and reports a score. Twenty real cases with expected outputs is the\nminimum, and cases are added every time the feature is wrong in the wild.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 7. AI features > 7.2 Evaluation before launch",
+      "chunk_id": "merik_b32976c8_0"
+    }
+  },
+  {
+    "chunk_id": "merik_267a2189_0",
+    "content": "### 7.3 Grounding and refusal  \nAny feature that answers questions about Merik or customer data must answer\nonly from supplied passages, must cite the passage it used, and must refuse\nwhen the passages do not contain the answer. Refusal rate is monitored: a\nsudden rise almost always means retrieval has broken rather than that questions\ngot harder.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 7. AI features > 7.3 Grounding and refusal",
+      "chunk_id": "merik_267a2189_0"
+    }
+  },
+  {
+    "chunk_id": "merik_6c7afc81_0",
+    "content": "### 7.4 Cost  \nEvery AI feature has a monthly cost ceiling agreed before launch and an alert\nat eighty per cent of it. Cost per request is tracked as a trend, because the\nusual failure is not a spike but a slow climb as prompts quietly grow.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 7. AI features > 7.4 Cost",
+      "chunk_id": "merik_6c7afc81_0"
+    }
+  },
+  {
+    "chunk_id": "merik_0a627bf1_0",
+    "content": "### 7.5 What we do not do  \nWe do not use customer data to train models. We do not deploy a feature whose\noutput is shown to a customer without a human-reviewed evaluation. We do not\nlet an agent take an irreversible action, including anything that moves money\nor deletes data, without a human approving that specific action.  \n---",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 7. AI features > 7.5 What we do not do",
+      "chunk_id": "merik_0a627bf1_0"
+    }
+  },
+  {
+    "chunk_id": "merik_05b5596c_0",
+    "content": "## 8. Documentation  \n### 8.1 The README  \nEvery repository opens with what it does in one paragraph, then exact commands\nthat work from a fresh clone. If a new engineer cannot run it within five\nminutes, the README is incomplete regardless of how much else it contains.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 8. Documentation > 8.1 The README",
+      "chunk_id": "merik_05b5596c_0"
+    }
+  },
+  {
+    "chunk_id": "merik_f93c9541_0",
+    "content": "### 8.2 Decision records  \nDecisions that were hard, contested or expensive get a short record: what we\nchose, what we rejected, and why. Two paragraphs is usually enough. The value\nis not the decision, it is that the next person can tell whether the reasoning\nstill holds.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 8. Documentation > 8.2 Decision records",
+      "chunk_id": "merik_f93c9541_0"
+    }
+  },
+  {
+    "chunk_id": "merik_3e7750f1_0",
+    "content": "### 8.3 Comments  \nComment why, not what. Code already says what it does. If it does not, the fix\nis usually clearer code rather than a longer comment.  \n---",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 8. Documentation > 8.3 Comments",
+      "chunk_id": "merik_3e7750f1_0"
+    }
+  },
+  {
+    "chunk_id": "merik_fbd4de80_0",
+    "content": "## 9. Contacts  \nEngineering Operations owns this handbook. Suggestions and corrections go\nthrough the internal support form; the queue is reviewed weekly.  \nQuestions about pay, leave, visas or benefits are not covered by this document\nand belong to People Operations.",
+    "metadata": {
+      "source": "handbook.md",
+      "section": "Merik Solutions Engineering Handbook > 9. Contacts",
+      "chunk_id": "merik_fbd4de80_0"
+    }
+  }
+]
